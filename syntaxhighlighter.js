@@ -6,7 +6,7 @@
  * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
  * 
  * @version
- * 4.0.1 (Wed, 23 Nov 2016 20:37:32 GMT)
+ * 4.0.1 (Wed, 30 Nov 2016 18:33:04 GMT)
  * 
  * @copyright
  * Copyright (C) 2004-2016 Alex Gorbatchev.
@@ -78,13 +78,13 @@
 	  });
 	});
 	
-	var _domready = __webpack_require__(52);
+	var _domready = __webpack_require__(53);
 	
 	var _domready2 = _interopRequireDefault(_domready);
 	
 	var _core2 = _interopRequireDefault(_core);
 	
-	var _dasherize = __webpack_require__(53);
+	var _dasherize = __webpack_require__(54);
 	
 	var dasherize = _interopRequireWildcard(_dasherize);
 	
@@ -385,8 +385,6 @@
 	
 	registerBrush(__webpack_require__(41));
 	
-	registerBrush(__webpack_require__(42));
-	
 	registerBrush(__webpack_require__(43));
 	
 	registerBrush(__webpack_require__(44));
@@ -404,6 +402,8 @@
 	registerBrush(__webpack_require__(50));
 	
 	registerBrush(__webpack_require__(51));
+	
+	registerBrush(__webpack_require__(52));
 	
 	/*
 	
@@ -4693,68 +4693,85 @@
 
 	'use strict';
 	
-	var BrushBase = __webpack_require__(22);
-	var regexLib = __webpack_require__(3).commonRegExp;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	function Brush() {
-	  // Contributed by Joel 'Jaykul' Bennett, http://PoshCode.org | http://HuddledMasses.org
-	  var keywords = 'while validateset validaterange validatepattern validatelength validatecount ' + 'until trap switch return ref process param parameter in if global: ' + 'function foreach for finally filter end elseif else dynamicparam do default ' + 'continue cmdletbinding break begin alias \\? % #script #private #local #global ' + 'mandatory parametersetname position valuefrompipeline ' + 'valuefrompipelinebypropertyname valuefromremainingarguments helpmessage ';
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	  var operators = ' and as band bnot bor bxor casesensitive ccontains ceq cge cgt cle ' + 'clike clt cmatch cne cnotcontains cnotlike cnotmatch contains ' + 'creplace eq exact f file ge gt icontains ieq ige igt ile ilike ilt ' + 'imatch ine inotcontains inotlike inotmatch ireplace is isnot le like ' + 'lt match ne not notcontains notlike notmatch or regex replace wildcard';
+	// This header is prepended to v3 brushes so that they can be bundled in like regular v4 brushes.
 	
-	  var verbs = 'write where wait use update unregister undo trace test tee take suspend ' + 'stop start split sort skip show set send select scroll resume restore ' + 'restart resolve resize reset rename remove register receive read push ' + 'pop ping out new move measure limit join invoke import group get format ' + 'foreach export expand exit enter enable disconnect disable debug cxnew ' + 'copy convertto convertfrom convert connect complete compare clear ' + 'checkpoint aggregate add';
-	
-	  // I can't find a way to match the comment based help in multi-line comments, because SH won't highlight in highlights, and javascript doesn't support lookbehind
-	  var commenthelp = ' component description example externalhelp forwardhelpcategory forwardhelptargetname forwardhelptargetname functionality inputs link notes outputs parameter remotehelprunspace role synopsis';
-	
-	  this.regexList = [{
-	    regex: new RegExp('^\\s*#[#\\s]*\\.(' + this.getKeywords(commenthelp) + ').*$', 'gim'),
-	    css: 'preprocessor help bold'
-	  }, {
-	    regex: regexLib.singleLinePerlComments,
-	    css: 'comments'
-	  }, {
-	    regex: /(&lt;|<)#[\s\S]*?#(&gt;|>)/gm,
-	    css: 'comments here'
-	  }, {
-	    regex: new RegExp('@"\\n[\\s\\S]*?\\n"@', 'gm'),
-	    css: 'script string here'
-	  }, {
-	    regex: new RegExp("@'\\n[\\s\\S]*?\\n'@", 'gm'),
-	    css: 'script string single here'
-	  }, {
-	    regex: new RegExp('"(?:\\$\\([^\\)]*\\)|[^"]|`"|"")*[^`]"', 'g'),
-	    css: 'string'
-	  }, {
-	    regex: new RegExp("'(?:[^']|'')*'", 'g'),
-	    css: 'string single'
-	  }, {
-	    regex: new RegExp('[\\$|@|@@](?:(?:global|script|private|env):)?[A-Z0-9_]+', 'gi'),
-	    css: 'variable'
-	  }, {
-	    regex: new RegExp('(?:\\b' + verbs.replace(/ /g, '\\b|\\b') + ')-[a-zA-Z_][a-zA-Z0-9_]*', 'gmi'),
-	    css: 'functions'
-	  }, {
-	    regex: new RegExp(this.getKeywords(keywords), 'gmi'),
-	    css: 'keyword'
-	  }, {
-	    regex: new RegExp('-' + this.getKeywords(operators), 'gmi'),
-	    css: 'operator value'
-	  }, {
-	    regex: new RegExp('\\[[A-Z_\\[][A-Z0-9_. `,\\[\\]]*\\]', 'gi'),
-	    css: 'constants'
-	  }, {
-	    regex: new RegExp('\\s+-(?!' + this.getKeywords(operators) + ')[a-zA-Z_][a-zA-Z0-9_]*', 'gmi'),
-	    css: 'color1'
-	  }];
+	var SyntaxHighlighter = {
+	  Highlighter: __webpack_require__(22),
+	  regexLib: __webpack_require__(3).commonRegExp,
+	  brushes: {}
 	};
 	
-	Brush.prototype = new BrushBase();
-	Brush.aliases = ['powershell', 'ps', 'posh'];
-	module.exports = Brush;
+	var Proxy = function () {
+	  function Proxy() {
+	    _classCallCheck(this, Proxy);
+	  }
+	
+	  _createClass(Proxy, [{
+	    key: 'Brush',
+	    set: function set(value) {
+	      module.exports = value;
+	    }
+	  }]);
+	
+	  return Proxy;
+	}();
+	
+	;
+	
+	var _exports = new Proxy();
+	;(function () {
+	  // CommonJS
+	  SyntaxHighlighter = SyntaxHighlighter || ( true ? __webpack_require__(42).SyntaxHighlighter : null);
+	
+	  function Brush() {
+	    // Contributed by Joel 'Jaykul' Bennett, http://PoshCode.org | http://HuddledMasses.org
+	    var keywords = 'workflow while var valuefromremainingarguments valuefrompipelinebypropertyname valuefrompipeline ' + 'validateset validatescript validaterange validatepattern validatenotnullorempty ' + 'validatenotnull validatelength validatecount using until try trap throw switch ' + 'sequence script: return ref process private: position parametersetname parameter ' + 'param parallel mandatory local: inlinescript in if hidden helpmessage global: ' + 'do define default data continue cmdletbinding class catch break begin allownull ' + 'allowemptystring allowemptycollection alias \\? % #script #private #local #global ';
+	
+	    var operators = ' and as band bnot bor bxor casesensitive ccontains ceq cge cgt cle ' + 'clike clt cmatch cne cnotcontains cnotlike cnotmatch contains ' + 'creplace eq exact f file ge gt icontains ieq ige igt ile ilike ilt ' + 'imatch ine inotcontains inotlike inotmatch ireplace is isnot le like ' + 'lt match ne not notcontains notlike notmatch or regex replace wildcard';
+	
+	    var verbs = 'write watch wait use update unregister unpublish unprotect unlock uninstall undo ' + 'unblock trace test sync switch suspend submit stop step start split ' + 'skip show set send select search save revoke resume restore restart resolve ' + 'resize reset request repair rename remove register redo receive read push ' + 'publish protect pop ping out optimize open new move mount merge measure ' + 'lock limit join invoke install initialize import hide group grant get ' + 'format find export expand exit enter enable edit dismount disconnect disable ' + 'deny debug copy convertto convertfrom convert connect confirm compress complete ' + 'compare close clear checkpoint block backup assert approve add';
+	
+	    // I can't find a way to match the comment based help in multi-line comments, because SH won't highlight in highlights, and javascript doesn't support lookbehind
+	    var commenthelp = ' component description example externalhelp forwardhelpcategory forwardhelptargetname forwardhelptargetname functionality inputs link notes outputs parameter remotehelprunspace role synopsis';
+	
+	    this.regexList = [{ regex: new RegExp('^\\s*#[#\\s]*\\.(' + this.getKeywords(commenthelp) + ').*$', 'gim'), css: 'preprocessor help bold' }, // comment-based help
+	    { regex: SyntaxHighlighter.regexLib.singleLinePerlComments, css: 'comments' }, // one line comments
+	    { regex: /(&lt;|<)#[\s\S]*?#(&gt;|>)/gm, css: 'comments here' }, // multi-line comments
+	
+	    { regex: new RegExp('@"\\n[\\s\\S]*?\\n"@', 'gm'), css: 'script string here' }, // double quoted here-strings
+	    { regex: new RegExp("@'\\n[\\s\\S]*?\\n'@", 'gm'), css: 'script string single here' }, // single quoted here-strings
+	    { regex: new RegExp('"(?:\\$\\([^\\)]*\\)|[^"]|`"|"")*[^`"]?"', 'g'), css: 'string' }, // double quoted strings
+	    { regex: new RegExp("'(?:[^']|'')*'", 'g'), css: 'string single' }, // single quoted strings
+	
+	    { regex: new RegExp('[\\$|@|@@](?:(?:global|script|private|env):)?[A-Z0-9_]+', 'gi'), css: 'variable' }, // $variables
+	    { regex: new RegExp('(?:\\b' + verbs.replace(/ /g, '\\b|\\b') + ')-[a-zA-Z_][a-zA-Z0-9_]*', 'gmi'), css: 'functions' }, // functions and cmdlets
+	    { regex: new RegExp(this.getKeywords(keywords), 'gmi'), css: 'keyword' }, // keywords
+	    { regex: new RegExp('-' + this.getKeywords(operators), 'gmi'), css: 'operator value' }, // operators
+	    { regex: new RegExp('\\[[A-Z_\\[][A-Z0-9_. `,\\[\\]]*\\]', 'gi'), css: 'constants' }, // .Net [Type]s
+	    { regex: new RegExp('\\s+-(?!' + this.getKeywords(operators) + ')[a-zA-Z_][a-zA-Z0-9_]*', 'gmi'), css: 'color1' }];
+	  };
+	
+	  Brush.prototype = new SyntaxHighlighter.Highlighter();
+	  Brush.aliases = ['powershell', 'ps', 'posh'];
+	
+	  SyntaxHighlighter.brushes.PowerShell = Brush;
+	
+	  // CommonJS
+	  typeof _exports != 'undefined' ? _exports.Brush = Brush : null;
+	})();
 
 /***/ },
 /* 42 */
+/***/ function(module, exports) {
+
+	module.exports = shCore;
+
+/***/ },
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4811,7 +4828,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4860,7 +4877,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4936,7 +4953,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4983,7 +5000,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5027,7 +5044,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5162,7 +5179,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5204,7 +5221,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5240,7 +5257,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5273,7 +5290,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5323,7 +5340,7 @@
 	module.exports = Brush;
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5359,7 +5376,7 @@
 	});
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
