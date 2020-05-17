@@ -1,0 +1,8 @@
+---
+---
+@charset "utf-8";
+
+$background-color: rgb(79,56,74);
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
