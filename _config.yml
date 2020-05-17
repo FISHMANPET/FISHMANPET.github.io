@@ -58,11 +58,17 @@ plugins:
  - jemoji
  - jekyll-include-cache
 
+# comments:
+#   provider: "utterances"
+#   utterances:
+#     theme: "github-dark-orange"
+#     issue_term: pathname
+
 comments:
   provider: "utterances"
   utterances:
-    theme: "github-dark-orange"
-    issue_term: pathname
+    theme: "github-dark-orange" # "github-dark"
+    issue_term: "pathname"
 
 author:
   name    : "Peter Bajurny"
