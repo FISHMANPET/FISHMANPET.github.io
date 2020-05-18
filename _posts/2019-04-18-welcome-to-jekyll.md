@@ -6,6 +6,7 @@ categories:
 tags:
   - Jekyll
   - update
+toc: true
 ---
 
 You'll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
@@ -20,6 +21,29 @@ def print_hi(name)
 end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
+```
+
+## PowerShell
+
+```powershell
+$smtpcreds = Get-Credential
+
+$emailSmtpServer = "smtp.umn.edu"
+$emailMessage = New-Object System.Net.Mail.MailMessage
+$emailMessage.From = "bajurny@umn.edu"
+$emailMessage.Sender = "oit-sup@umn.edu"
+$emailMessage.To.Add( "oit-hosting-automation@umn.edu" )
+$emailMessage.Subject = "Testing assignment group stuff"
+$emailMessage.IsBodyHtml = $false
+$emailMessage.Body = @"
+this is a test to see if email that sets an assignment group but have the assignment group overridden by email body
+"@
+
+$SMTPClient = New-Object System.Net.Mail.SmtpClient( $emailSmtpServer )
+$SMTPClient.EnableSsl = $true
+$SMTPClient.Credentials = $smtpcreds.GetNetworkCredential()
+
+$SMTPClient.Send( $emailMessage )
 ```
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
