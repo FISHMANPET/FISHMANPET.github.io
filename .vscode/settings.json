@@ -1,0 +1,9 @@
+{
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 80,
+    "files.encoding": "utf8",
+    "[markdown]": {
+        "editor.wordWrap": "bounded",
+        "editor.wordWrapColumn": 80
+       },
+}
