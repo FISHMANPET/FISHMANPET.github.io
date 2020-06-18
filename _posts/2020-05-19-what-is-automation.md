@@ -28,3 +28,6 @@ But the tractor didn't automate farming, it _mechanized_ it.
 
 Likewise, the person working the help desk and writing a script to make their job easier hasn't fully automated that task, but they have mechanized it.
 I don't make this distinction because I think mechanization is less important than automation. In fact it's vitally important, if for no other reason it's the first step to automation.
+
+As someone with a background in ops, rather than dev, I think my perspective on automation is a little different from the conventional devops wisdom.
+Ironically, whereas the dev-focused devops definition seems concerned with automating infrastructure (in service of the apps), my ops perspective is that I'm interested in automating the business process.
