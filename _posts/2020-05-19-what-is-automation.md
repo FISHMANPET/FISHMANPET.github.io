@@ -12,7 +12,6 @@ But, what do _I_ think Automation is?
 I've been an ops my entire career, and as an elder millennial I think I'm just old enough to be able to say "back in my day."
 And back in my day, we didn't have virtualization, or most of the configuration management tools as we know them now.
 Building and configuring new systems and applications was comparatively rare, and was often done by hand.
-I'm now thinking back fondly of how the Computer Science department where I worked as a student during undergrad used rdist to distribute configuration files to hundreds (maybe thousands) of Unix systems.
 
 We did things by hand, that's manual.
 Lot's of IT people all over are in a state like this.
@@ -26,8 +25,12 @@ IT seems rife with farming analogies these days, so I think back to farming 150 
 It was lots of hard manual labor, and the tractor revolutionized that.
 But the tractor didn't automate farming, it _mechanized_ it.
 
+Nevertheless, 
+
 Likewise, the person working the help desk and writing a script to make their job easier hasn't fully automated that task, but they have mechanized it.
 I don't make this distinction because I think mechanization is less important than automation. In fact it's vitally important, if for no other reason it's the first step to automation.
 
 As someone with a background in ops, rather than dev, I think my perspective on automation is a little different from the conventional devops wisdom.
-Ironically, whereas the dev-focused devops definition seems concerned with automating infrastructure (in service of the apps), my ops perspective is that I'm interested in automating the business process.
+Ironically, whereas the dev-focused devops definition seems concerned with automating infrastructure (in service of the apps), my ops perspective is that I'm interested in automating the business process, which usually means consuming those apps.
+
+
