@@ -37,7 +37,7 @@ paginate: 5 # amount of posts to show
 timezone: America/Chicago # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
- - _pages
+  - _pages
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -52,12 +52,12 @@ exclude:
 
 # Plugins (previously gems:)
 plugins:
- - jekyll-paginate
- - jekyll-sitemap
- - jekyll-gist
- - jekyll-feed
- - jemoji
- - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
 
 # comments:
 #   provider: "utterances"
@@ -72,28 +72,31 @@ comments:
     issue_term: "pathname"
 
 author:
-  name    : "Peter Bajurny"
-  avatar  : "/assets/images/bio.jpg"
-  bio     : "Cloud Automation Engineer and DevOps Platform Product Owner at the University of Minnesota, focused on PowerShell, Azure DevOps, and building tools to make other people's lives easier"
+  name: "Peter Bajurny"
+  avatar: "/assets/images/bio.jpg"
+  bio: "Cloud Automation Engineer and DevOps Platform Product Owner at the University of Minnesota, focused on PowerShell, Azure DevOps, and building tools to make other people's lives easier"
   location: "Minneapolis, MN"
-  twitter : fishmanpet
-  github  : fishmanpet
-  linkedin: peter-bajurny
-  #facebook: FISHMANPET
-  email   : peter@bajurny.us
+  # twitter : fishmanpet
+  # github  : fishmanpet
+  # linkedin: peter-bajurny
+  # facebook: FISHMANPET
+  # email   : peter@bajurny.us
   links:
     # - label: "Website"
     #   icon: "fas fa-fw fa-link"
     #   url: "https://"
-    # - label: "Twitter"
-    #   icon: "fab fa-fw fa-twitter-square"
-    #   url: "https://twitter.com/"
-    # - label: "GitHub"
-    #   icon: "fab fa-fw fa-github"
-    #   url: "https://github.com/"
-    # - label: "Instagram"
-    #   icon: "fab fa-fw fa-instagram"
-    #   url: "https://instagram.com/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/fishmanpet"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/fishmanpet"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/peter-bajurny"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:peter@bajurny.us"
 
 # footer:
 #   links:
