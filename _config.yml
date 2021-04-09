@@ -48,6 +48,7 @@ exclude:
   - backup
   - backup2
   - README.md
+  - vendor
 
 # Plugins (previously gems:)
 plugins:
@@ -72,7 +73,7 @@ comments:
 
 author:
   name    : "Peter Bajurny"
-  avatar  : "/assets/images/bio-photo.jpg"
+  avatar  : "/assets/images/bio.jpg"
   bio     : "Automation Engineer (whatever that means) at the University of Minnesota, PowerShell is my weapon of choice"
   location: "Minneapolis, MN"
   twitter : fishmanpet
