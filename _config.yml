@@ -88,6 +88,9 @@ author:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/fishmanpet"
+    - label: Mastodon
+      icon: fab fa-fw fa-mastodon
+      url: "https://hachyderm.io/@FISHMANPET"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/fishmanpet"
